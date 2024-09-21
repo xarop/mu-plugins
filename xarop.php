@@ -2,7 +2,7 @@
 /*
 Plugin Name: Xarop Cleanup
 Description: Disables Gutenberg editor, comments, emojis, and unnecessary meta from the header. Replaces WordPress logo on login/register page with a custom logo.
-Version: 1.0
+Version: 1.1
 Author: xarop.com
 */
 

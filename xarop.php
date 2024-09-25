@@ -107,6 +107,10 @@ add_action('wp_dashboard_setup', 'xarop_add_custom_dashboard_widget');
 
 function xarop_custom_dashboard_content()
 {
-    echo '<iframe src="//xarop.com" style="width:100%; height:500px; border:none;"></iframe>';
+    $site_name = get_bloginfo('name');
+    $site_url = get_site_url();
+    echo '<h3>' . $site_name . '</h3>';
+    echo '<small>' . $site_url . '</small>';
+    echo '<iframe src="//xarop.com?site=' . esc_attr($site_url) . '" style="width:100%; height:500px; border:none;"></iframe>';
     //echo 'Developed in Barcelona by xarop.com <br/><br/><a href="https://xarop.com/" target="_blank"><img src="' . plugin_dir_url(__FILE__) . 'xarop-logo.svg' . '" style="width:100%; height:100px; border:none;"></a>';
 }

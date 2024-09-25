@@ -6,6 +6,9 @@ Version: 1.1
 Author: xarop.com
 */
 
+// Load ACF Pro
+//require_once( __DIR__ . '/acf-pro/acf.php' );
+
 // Disable Gutenberg editor
 // add_filter('use_block_editor_for_post', '__return_false', 10);
 

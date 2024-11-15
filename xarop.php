@@ -57,6 +57,21 @@ remove_action('wp_head', 'rest_output_link_wp_head');
 remove_action('wp_head', 'wp_shortlink_wp_head');
 remove_action('wp_head', 'wp_oembed_add_discovery_links');
 
+// Replace WordPress logo in the admin bar
+add_action('admin_bar_menu', function ($wp_admin_bar) {
+    // Remove the default WordPress logo
+    $wp_admin_bar->remove_node('wp-logo');
+
+    // Add a custom logo
+    $wp_admin_bar->add_node([
+        'id'    => 'custom-logo',
+        'title' => '<img src="' . plugin_dir_url(__FILE__) . 'favicon.png" alt="Xarop Logo" style="height:20px; width:auto; padding:6px 0;">',
+        'href'  => home_url(), // Link the logo to your site's homepage
+    ]);
+}, 11);
+
+
+
 // Custom Login Logo
 function xarop_custom_login_logo()
 { ?>
@@ -69,6 +84,15 @@ function xarop_custom_login_logo()
             background-size: contain;
             background-repeat: no-repeat;
             padding-bottom: 30px;
+        }
+
+        body.login.wp-core-ui .button-primary {
+            background: #EE2455;
+            border-color: #EE2455;
+        }
+
+        #login-message {
+            border-color: #EE2455 !important;
         }
     </style>
 <?php }
@@ -114,6 +138,6 @@ function xarop_custom_dashboard_content()
     $site_url = get_site_url();
     echo '<h3>' . $site_name . '</h3>';
     echo '<small>' . $site_url . '</small>';
-    echo '<iframe src="//xarop.com?site=' . esc_attr($site_url) . '" style="width:100%; height:500px; border:none;"></iframe>';
+    echo '<iframe src="//xarop.com/suport/?site=' . esc_attr($site_url) . '" style="width:100%; height:500px; border:none;"></iframe>';
     //echo 'Developed in Barcelona by xarop.com <br/><br/><a href="https://xarop.com/" target="_blank"><img src="' . plugin_dir_url(__FILE__) . 'xarop-logo.svg' . '" style="width:100%; height:100px; border:none;"></a>';
 }
